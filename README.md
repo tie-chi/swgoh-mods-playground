@@ -44,3 +44,5 @@ python 01_pull_mods_from_hotutils.py
 Open `02_analyze_mods.ipynb` in VSCode, run all the cells.
 
 > You will need to install some VSCode extensions, they should appear in recommendation.
+
+![02_analyze_mods.ipynb screenshot](.readme_resources/02_analyze_mods_screenshot.png)
