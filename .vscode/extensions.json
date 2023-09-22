@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "visualstudioexptteam.vscodeintellicode",
+    "ms-python.python",
+    "ms-python.isort",
+    "ms-python.vscode-pylance",
+    "ms-python.pylint",
+    "ms-python.black-formatter",
+    "ms-toolsai.jupyter",
+    "njpwerner.autodocstring",
+    "oderwat.indent-rainbow",
+    "kevinrose.vsc-python-indent",
+    "dotenv.dotenv-vscode",
+    "ms-vscode.hexeditor"
+  ]
+}

@@ -1,0 +1,20 @@
+channels:
+  - microsoft
+  - conda-forge
+  - defaults
+dependencies:
+  - jupyterlab
+  - cryptography
+  - numpy
+  - tqdm
+  - ipympl
+  - black
+  - pandas
+  - pytest
+  - python=3.11
+  - matplotx
+  - playwright
+  - requests
+  - matplotlib
+  - pylint
+  - seaborn
