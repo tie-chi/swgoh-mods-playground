@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import json
 import logging
 import os
 import pickle
@@ -14,7 +15,7 @@ from libs.mod.types import ModSet, ModSlot, StatType
 
 @dataclass
 class HotUtilsConnectorConfigs:
-    cookie_filepath: str | None = None
+    cookie_json_filepath: str | None = None
     out_data_filepath: str | None = None
     mods_dump_filepath: str | None = None
     log_level: int = logging.INFO
@@ -46,20 +47,20 @@ class HotUtilsConnector:
         return not self.__page.is_closed()
 
     def __load_cookie(self) -> None:
-        filepath = self.__configs.cookie_filepath
+        filepath = self.__configs.cookie_json_filepath
         if filepath is None:
             raise
-        with open(filepath, "rb") as f:
-            cookies = pickle.load(f)
+        with open(filepath, "r") as f:
+            cookies = json.load(f)
             self.__context.add_cookies(cookies)
             self.__logger.debug("Cookie loaded")
 
     def __save_cookie(self) -> None:
-        filepath = self.__configs.cookie_filepath
+        filepath = self.__configs.cookie_json_filepath
         if filepath is None:
             raise
-        with open(filepath, "wb") as f:
-            pickle.dump(self.__context.cookies(), f)
+        with open(filepath, "w") as f:
+            json.dump(self.__context.cookies(), f)
             self.__logger.debug("Cookie file saved")
 
     def __on_refresh_request(self, request: Request) -> None:
@@ -90,7 +91,7 @@ class HotUtilsConnector:
     def login(self) -> None:
         self.__page.goto(self.__LOGIN_URL)
         self.__page.evaluate("() => localStorage.setItem('rememberMe', 1)")
-        if self.__configs.cookie_filepath and os.path.isfile(self.__configs.cookie_filepath):
+        if self.__configs.cookie_json_filepath and os.path.isfile(self.__configs.cookie_json_filepath):
             self.__logger.info("Found cookie file")
             self.__load_cookie()
             self.__page.goto(self.__ACCOUNT_SELECT_URL)

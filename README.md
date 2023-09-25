@@ -39,6 +39,22 @@ python 01_pull_mods_from_hotutils.py
 
 > You may need to activate conda environments before running the python script
 
+For the first log in, if you stuck in the endless discord bot check, you can copy ur hotutils session id from the
+browser's cookie into `COOKIE_JSON_FILE` (default file is  `data/hotutils_cookie.json`). A minimal sample json data
+is like this:
+
+``` json
+[
+    {
+        "name": "hotUtilsSession",
+        "value": "the-session-id-for-hotutils",
+        "domain": "hotutils.com",
+        "path": "/",
+        "sameSite": "Lax"
+    }
+]
+```
+
 ## Analyze Mods
 
 Open `02_analyze_mods.ipynb` in VSCode, run all the cells.
